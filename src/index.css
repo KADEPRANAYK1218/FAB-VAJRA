@@ -1,0 +1,314 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  
+  h1, h2, h3, .font-display {
+    font-family: 'Rajdhani', 'Chakra Petch', sans-serif;
+  }
+
+  .font-mono-code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .font-tech {
+    font-family: 'Chakra Petch', sans-serif;
+  }
+}
+
+/* Custom glowing effects and tactical HUD styles */
+@keyframes radar-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+@keyframes float-subtle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-radar {
+  animation: radar-sweep 4s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-scanline {
+  animation: scanline 8s linear infinite;
+}
+
+.animate-float-subtle {
+  animation: float-subtle 4s ease-in-out infinite;
+}
+
+/* Custom scrollbar for tactical panels */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(5, 10, 20, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.25);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.45);
+}
+
+/* Glassmorphic Tactical Panels */
+.vajra-panel {
+  background: rgba(17, 28, 61, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(34, 211, 238, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.vajra-panel-elevated {
+  background: rgba(10, 18, 42, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(34, 211, 238, 0.28);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.vajra-panel-alert {
+  background: rgba(35, 10, 20, 0.78);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(244, 63, 94, 0.15);
+}
+
+.vajra-border-saffron {
+  border-color: rgba(255, 153, 51, 0.4);
+}
+
+.vajra-glow-saffron {
+  box-shadow: 0 0 20px rgba(255, 153, 51, 0.25);
+}
+
+.vajra-glow-cyan {
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.25);
+}
+
+.vajra-glow-green {
+  box-shadow: 0 0 20px rgba(19, 136, 8, 0.25);
+}
+
+/* =========================================================================
+   LIGHT THEME OVERRIDES (TACTICAL COMMAND HIGH-CONTRAST LIGHT MODE)
+   ========================================================================= */
+html.theme-light,
+body.theme-light,
+.theme-light {
+  color-scheme: light !important;
+}
+
+.theme-light,
+.theme-light #vajra-root-app,
+.theme-light #vajra-main-dashboard {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* Header & Navigation */
+.theme-light header {
+  background-color: #ffffff !important;
+  border-bottom-color: #cbd5e1 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+.theme-light aside {
+  background-color: #ffffff !important;
+  border-right-color: #cbd5e1 !important;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.02) !important;
+}
+
+.theme-light aside button:not([class*="bg-gradient"]) {
+  color: #475569 !important;
+}
+
+.theme-light aside button:not([class*="bg-gradient"]):hover {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* Light Theme Outer Cards & Major Panels */
+.theme-light [id^="card-"],
+.theme-light .vajra-settings-card,
+.theme-light .vajra-panel,
+.theme-light .vajra-panel-elevated,
+.theme-light [class*="bg-[#020b1c]"],
+.theme-light [class*="bg-[#02091b]"],
+.theme-light [class*="bg-[#020a1c]"],
+.theme-light [class*="bg-[#010614]"],
+.theme-light [class*="bg-[#050A14]"],
+.theme-light [class*="bg-slate-950"],
+.theme-light [class*="bg-slate-900"] {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05) !important;
+  color: #0f172a !important;
+}
+
+/* Inner Boxes, List Rows & Sub-Panels */
+.theme-light [class*="bg-[#010816]"],
+.theme-light [class*="bg-[#01091a]"],
+.theme-light [class*="bg-[#021029]"],
+.theme-light [class*="bg-[#02132d]"],
+.theme-light [class*="bg-[#031533]"],
+.theme-light [class*="bg-[#031a3d]"] {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+/* Secondary Action Buttons (e.g. Manage Biometrics, View Full Logs, Reset) */
+.theme-light [class*="bg-[#021833]"] {
+  background-color: #f0fdfa !important;
+  border-color: #99f6e4 !important;
+  color: #0d9488 !important;
+}
+.theme-light [class*="bg-[#021833]"]:hover {
+  background-color: #ccfbf1 !important;
+  color: #0f766e !important;
+}
+
+/* Active Selected Chips & Buttons in Light Mode */
+.theme-light [class*="bg-cyan-500/20"] {
+  background-color: #e0f2fe !important;
+  border-color: #0284c7 !important;
+  color: #0369a1 !important;
+  box-shadow: 0 0 8px rgba(2, 132, 199, 0.25) !important;
+}
+
+/* Inactive Toggle Switches in Light Mode */
+.theme-light .bg-slate-800 {
+  background-color: #cbd5e1 !important;
+}
+
+/* Status Badges */
+.theme-light .bg-slate-800.text-slate-400 {
+  background-color: #e2e8f0 !important;
+  color: #64748b !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Text Colors */
+.theme-light .text-white,
+.theme-light .text-slate-100,
+.theme-light .text-slate-200 {
+  color: #0f172a !important;
+}
+
+.theme-light .text-slate-300,
+.theme-light .text-slate-400 {
+  color: #475569 !important;
+}
+
+.theme-light .text-slate-500 {
+  color: #64748b !important;
+}
+
+.theme-light .text-cyan-300,
+.theme-light .text-cyan-400 {
+  color: #0284c7 !important;
+}
+
+/* Borders */
+.theme-light [class*="border-slate-800"],
+.theme-light [class*="border-cyan-500/20"],
+.theme-light [class*="border-cyan-500/30"],
+.theme-light [class*="border-cyan-500/40"],
+.theme-light [class*="border-[#0055ff]/30"],
+.theme-light [class*="border-[#0055ff]/40"] {
+  border-color: #e2e8f0 !important;
+}
+
+/* Form Controls */
+.theme-light select,
+.theme-light input[type="text"],
+.theme-light input[type="search"],
+.theme-light input[type="email"],
+.theme-light input[type="tel"] {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.theme-light select option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* Tables & Audit Logs */
+.theme-light table thead tr {
+  border-bottom-color: #cbd5e1 !important;
+}
+.theme-light table thead th {
+  color: #0284c7 !important;
+}
+.theme-light table tbody tr {
+  border-color: #e2e8f0 !important;
+}
+.theme-light table tbody tr:hover {
+  background-color: #f1f5f9 !important;
+}
+.theme-light table tbody td {
+  color: #1e293b !important;
+}
+
+.theme-light .divide-slate-800,
+.theme-light .divide-slate-800\/80 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e2e8f0 !important;
+}
+
+/* Dialogs & Modal Popups in Light Mode */
+.theme-light .fixed.inset-0.bg-black\/80,
+.theme-light .fixed.inset-0.bg-black\/85,
+.theme-light .fixed.inset-0.bg-black\/90,
+.theme-light .fixed.inset-0[class*="bg-black"] {
+  background-color: rgba(15, 23, 42, 0.45) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.theme-light .fixed.inset-0 [class*="bg-[#020b1c]"],
+.theme-light .fixed.inset-0 [class*="bg-[#01091a]"],
+.theme-light .fixed.inset-0 [class*="bg-[#010816]"] {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  color: #0f172a !important;
+}
+
+/* Light Mode Scrollbar */
+.theme-light ::-webkit-scrollbar-track {
+  background: #f1f5f9 !important;
+}
+.theme-light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1 !important;
+}
+.theme-light ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8 !important;
+}
+
+
